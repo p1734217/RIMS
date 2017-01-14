@@ -20,7 +20,7 @@ public class Gsonpractical {
 		k.setVagetables("sdkfgk");
 	    
 		System.out.println("test");
-		
+		System.out.println("test");
 		Room rm = new Room();
 		rm.setNoOfRooms(104);
 		rm.setNoOfPartner(52);
