@@ -18,7 +18,7 @@ public class Gsonpractical {
 		k.setOthers("sdkjbkj");
 		k.setSpices("sdkhfk");
 		k.setVagetables("sdkfgk");
-	
+	System.out.println("aksnakjnk");
 		
 		Room rm = new Room();
 		rm.setNoOfRooms(104);
