@@ -18,7 +18,8 @@ public class Gsonpractical {
 		k.setOthers("sdkjbkj");
 		k.setSpices("sdkhfk");
 		k.setVagetables("sdkfgk");
-	System.out.println("aksnakjnk");
+	    
+		System.out.println("test");
 		
 		Room rm = new Room();
 		rm.setNoOfRooms(104);
@@ -30,7 +31,7 @@ public class Gsonpractical {
 		String  a=gson.toJson(rm);
 
 		String x=gson.toJson(rm);
-	   Room y=gson.fromJson(x, Room.class);
+	    Room y=gson.fromJson(x, Room.class);
         System.out.println("hii :  "+x);
         System.out.println("Beverage "+y.getKitchen().getBeverage()+ "Spices :"+y.getKitchen().getSpices()+ "Room No :"+y.getRoomNo());
 	}
