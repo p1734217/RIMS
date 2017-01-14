@@ -1,0 +1,281 @@
+<!--DOCTYPE html-->
+<html>
+<head>
+<meta charset="utf-8">
+<title>Welcome</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+$( document ).ready(function() {
+    // setAddress();
+});
+
+function setAddress(){
+	
+	var pincode=$("#pin").val();
+	var urls="https://pincode.saratchandra.in/api/pincode/"+pincode;
+	
+	$.ajax({
+		type : "GET",
+		url : urls,
+		data : {
+		},
+		dataType : "json",
+		success : function(data) {
+			console.log(urls);
+ 			if (data.status == "200") {
+				alert("suucess address fetch");
+			} else
+				alert("Getting address Failed  " + data.status);
+ 		},
+		error : function() {
+
+		}
+	});
+
+}
+
+	function login() {
+
+		$.ajax({
+			type : "POST",
+			url : "../RIMS/rest/login?q=login",
+			data : {
+				username : $("#username").val(),
+				password : $("#password").val()
+			},
+			dataType : "json",
+			success : function(data) {
+				if (data.result == "success") {
+					$("#data").html("Login Successfull");
+					window.location.href = "/RIMS/static/home.html";
+				} else
+					alert("Login Failed  " + data.result);
+			},
+			error : function() {
+
+			}
+		});
+	}
+
+	function register() {
+		alert("registering");
+		$.ajax({
+			type : "POST",
+			url : "/RIMS/rest/register?q=register",
+			data : {
+				username : $("#userName").val(),
+				password : $("#userPass").val(),
+				email : $("#userEmail").val(),
+				country : $("#userCountry").val(),
+				mobile1:  $("#mobile").val(),
+				mobile2: $("#hmobile").val(),
+				state: $("#state").val(),
+				pincode: $("#pincode").val(),
+				gender: $("#gender").val()
+			},
+			dataType : "json",
+			success : function(data) {
+				if (data.result == "success") {
+					alert("thank you");
+				} else
+					alert("Retry");
+			}
+
+		});
+	}
+
+	function showForm(x) {
+
+		if (x == 2) {
+			$("#para").hide();
+			$("#login").show();
+			$("#register").hide();
+
+		}
+		if (x == 1) {
+			$("#para").hide();
+			$("#login").hide();
+			$("#register").show();
+		}
+	}
+
+	function reset() {
+		$("#username").val("");
+		$("#password").val("");
+		$("#userName").val("");
+		$("#userPass").val("");
+		$("#userEmail").val("");
+
+	}
+</script>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">RIMS</a>
+			</div>
+			<ul class="nav navbar-nav pull-right">
+				<li class="active"><a href="/RIMS/index.html">Home</a></li>
+				<li><a href="">About us</a></li>
+				<li><a href="">Contact us</a></li>
+				<li><a href="javascript:showForm(1);" onclick="showForm(1);">Register</a></li>
+				<li><a href="javascript:showForm(2);">Login</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div id="login" style="display: none" align="center">
+		<div class="row">
+			<lable class="col-md-2"></lable>
+			<lable class="col-md-2">UserName: </lable>
+			<input type="text" id="username" class="col-sm-4" />
+			</lable>
+		</div>
+		<br />
+		<div class="row">
+			<lable class="col-md-2"></lable>
+			<lable class="col-md-2">Password: </lable>
+			<input type="password" id="password" class="col-sm-4" />
+		</div>
+		<br /> <input type="submit" id="username" onclick="login()">
+		<input type="reset" onclick="reset()"> <input type="checkbox">
+		Remember me <a href="#">Forgot password?</a>
+	</div>
+
+	<table align="center">
+		<div id="register" style="display: none" align="center">
+			<div class="row">
+				<lable class="col-md-2"></lable>
+				<lable class="col-md-2 pull-center" align="center">Name: </lable>
+				<input type="text" id="userName" class="col-sm-4" required/>
+				</lable>
+			</div>
+			<br />
+			<div class="row">
+				<lable class="col-md-2"></lable>
+				<lable class="col-md-2 pull-center">Password: </lable>
+				<input type="password" id="userPass" class="col-sm-4" required/>
+			</div>
+			<br />
+			<div class="row">
+				<lable class="col-md-2"></lable>
+				<lable class="col-md-2 pull-center">Confirm Password: </lable>
+				<input type="password" id="confirmPass" class="col-sm-4" />
+			</div>
+			<br />
+			<div class="row">
+				<lable class="col-md-2"></lable>
+				<lable class="col-md-2 pull-center">Email: </lable>
+				<input type="text" id="userEmail" class="col-sm-4" />
+			</div>
+			<br />
+			
+			<div class="row">
+				<lable class="col-md-2"></lable>
+				<lable class="col-md-2 pull-center">Mobile: </lable>
+				<input type="text" id="mobile" class="col-sm-4" />
+				
+				</div>
+				<br />
+			
+			<div class="row">
+				<lable class="col-md-2"></lable>
+				<lable class="col-md-2 pull-center">Gender: </lable>
+				<input type="text" id="gender" class="col-sm-4" />
+				
+				</div>
+				<br/>
+				<div class="row">
+				<lable class="col-md-2"></lable>
+				<lable class="col-md-2 pull-center">Home Mobile: </lable>
+				<input type="text" id="hmobile" class="col-sm-4" />
+			</div>
+			
+			<br />			
+			<div class="row">
+				<lable class="col-md-2"></lable>
+				<lable class="col-md-2 pull-center">Country: </lable>
+				<select id="userCountry" class="col-sm-4">
+					<option>India</option>
+					<option>Pakistan</option>
+					<option>other</option>
+				</select>
+
+			</div>
+			<br>
+			
+			<div class="row">
+				<lable class="col-md-2"></lable>
+				<lable class="col-md-2 pull-center">State: </lable>
+				<select id="state" class="col-sm-4">
+					<option>Uttar Pradesh</option>
+					<option>MP</option>
+					<option>Bihar</option>
+				</select>
+
+			</div>
+			
+			<br />
+			<div class="row">
+				<input type="submit" id="submit" onclick="register()" /> <input
+					type="reset" onclick="reset()"> <br />
+			</div>
+			Pincode:<input type="text" id="pincode" maxlength="6">
+			<button onclick="setAddress()" >Get Address</button>
+		</div>
+	</table>
+	<br />
+	<div id="para" class="container">
+		<hr>
+		<div class="col-md-4">
+			<h3>Designed for every room</h3>
+
+			Rooms with just one shared device, such as an iPad or Chromebook, can
+			use Student Stories, and logging in is super easy! Students scan a
+			class code to log in — no passwords to rememberog into your class on
+			the ClassDojo website, then print your code poster by tapping "Class
+			code".
+		</div>
+		<div class="col-md-4">
+			<h3>Designed for every kitchen</h3>
+			The less/, js/, and fonts/ are the source code for our CSS, JS, and
+			icon fonts (respectively). The dist/ folder includes everything
+			listed in the precompiled download section above. The docs/ folder
+			includes the source code for our documentation, and examples/ of
+			Bootstrap usage. Beyond that, any other included file provides
+			support for packages, license information, and development.
+		</div>
+		<div class="col-md-4">
+			<h3>Designed for every bathroom</h3>
+			The less/, js/, and fonts/ are the source code for our CSS, JS, and
+			icon fonts (respectively). The dist/ folder includes everything
+			listed in the precompiled download section above. The docs/ folder
+			includes the source code for our documentation, and examples/ of
+			Bootstrap usage. Beyond that, any other included file provides
+			support for packages, license information, and development.
+		</div>
+
+	</div>
+	<hr>
+
+	<footer class="footer navbar-default">
+		<div class="container">
+			<center>
+				<p class="text-muted">Room Inventory Management System © 2016
+					Company, Inc.</p>
+			</center>
+		</div>
+	</footer>
+	<div>
+
+		<br />
+</body>
+</html>

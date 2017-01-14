@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Welcome</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+	
+	
+	function login() {
+	
+		$.ajax({
+			type : "POST",
+			url : "../RestWS/rest/login?q=login",
+			data : {username: $("#username").val(),
+				password: $("#password").val()
+			},
+			dataType : "json",
+			success : function(data) {
+				if(data.result=="success"){
+				  $("#data").html("Login Successfull");
+				  window.location.href="/RestWS/static/home.html"; 
+				 // window.location("/RestWS/register.html"); 
+				}
+				else
+					alert("Login Failed  "+data.result);
+			},
+			error : function() {
+
+			}
+		});
+	}
+	 function register()
+	    {	
+	    	alert("registering");
+	    	$.ajax({
+	    		type:"POST",
+	    		url:"/RestWS/rest/register?q=register",
+	    	    data:{username: $("#userName").val(),
+					password: $("#userPass").val(),
+					email: $("#userEmail").val(),
+					country: $("#userCountry").val()
+					},
+				dataType : "json",
+				success: function(data){
+					if(data.result=="success"){
+						alert("thank you");
+					}
+					else
+						alert("Retry");
+				}
+	    	
+	    	});
+	    }
+	
+	function showForm(x)
+	{
+		
+		if(x==2){
+		  $("#para").hide();		  
+		  $("#login").show();
+		  $("#register").hide();
+		  
+		}
+		if(x==1){
+			$("#para").hide();
+			$("#login").hide();
+			$("#register").show();
+		}
+	}
+	
+	function reset(){
+	$("#username").val("");
+	$("#password").val("");
+	$("#userName").val("");
+	$("#userPass").val("");
+	$("#userEmail").val("");
+	
+}
+	function uplodaImage(id) {
+
+		alert($("#" + id).val().split("\\").slice(-1).pop());
+		alert($("#" + id).val());
+		
+//		var existsResourceName = $("#existResourceName").val() === undefined ? "" : $("#existResourceName").val();
+		var serverurl = '../rest/fileUpload?fileType=' + fileType + '&fileId=' + fileType + '&existsResourceName=' + existsResourceName;
+
+		var fileName = $("#" + id).val().split("\\").slice(-1).pop();
+		
+		$.ajaxFileUpload({
+			url:serverurl,
+			timeout:250000,
+			secureuri:false,
+			fileElementId:id,
+			dataType: 'json',
+			success: function (data, status) {
+				if (data && data.result == 'success') {
+					fileSize = data.size;
+					mediaLength = data.duration;
+						internalFile = data.internalFileName;
+						internalFileName = fileName;
+					}
+					$("#" + id).hide();
+					$("#" + id + "_name").hide();
+					$("#" + id + "_file_name").html(fileName);
+					$("#" + id + "_main_div").show();
+				} else {
+				}
+			},
+			error: function (data, status, e){
+			}
+		});
+	}
+
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">RIMS</a>
+    </div>
+    <ul class="nav navbar-nav pull-right">
+      <li class="active"><a href="/RIMS/index.html">Home</a></li>
+      <li><a href="" >About us</a></li>
+      <li><a href="" >Contact us</a></li>
+      <li><a href="javascript:showForm(1);"  onclick= "showForm(1);">Register</a></li>
+      <li><a href="javascript:showForm(2);" >Login</a>  </li>
+    </ul>
+  </div>
+</nav>
+
+<img src="../images/profiles/profile.jpg" class="img-circle" width="150px" height="140"/>Pradeep Kumar
+<input type="file" id="profile_pic" onchange="uplodaImage('profile_pic')"><br/>
+<input type="submit" id="profile" onclick="uplodaImage('profile_pic')">
+
+ <footer class="footer navbar-default">
+      <div class="container">
+        <center><p class="text-muted">Room Inventory Management System   © 2016 Company, Inc.</p></center>
+      </div>
+    </footer>
+</body>
+</html>
