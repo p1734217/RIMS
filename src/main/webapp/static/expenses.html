@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+var uflag=false;
+var id;
+	$(document).ready(function() {
+		
+		
+		fun();
+
+		$("#key1").focus().bind("keypress", function(e) {
+	  		if (e.keyCode == 13) {
+			  search();
+	  		}
+		});
+
+	});
+	
+//checked row store into array	
+function getAllChecked(){
+	var ids = new Array();
+
+	$("input:checkbox[name=expns]:checked").each(function(){
+		ids.push($(this).val());
+	});
+	
+//	alert(selected);
+	if(ids.length>0){
+	$.ajax({
+		type : "POST",
+		url  : "../rest/expenses?q=delete",
+	    data  : {
+	    	selected : ids.toString(),
+	    },
+	    dataType : "json",
+		beforeSend: function(msg){
+			  alert("ids to delete:- "+ids);
+	    },
+	    success : function(data){
+			alert("Success: "+data.result);
+	    	if (data.result == "success") {
+				location.reload();
+			} else
+				alert("Failed to save"+data.result);
+	    },
+	    error : function(data){
+	    	alert("Error: "+JSON.stringify(data));
+	    }
+		
+	});
+	}else
+		alert("select ids ");
+}
+	
+	function search(){
+
+		tdata = "";
+		$.ajax({
+					type : "POST",
+					url : "../rest/expenses?q=search",
+					data : {
+						key: $("#key1").val(),
+						
+					},
+					dataType : "json",
+					beforeSend: function(msg){
+				  // alert(key);
+				    },
+					success : function(data) {
+						//alert(JSON.stringify(data));
+						//alert( data[0].person);
+						
+						for (i = 0; i < data.length; i++)
+							tdata += '<tr class="success" id="'+data[i].id+'"><td><input type="checkbox" name="expns" value="'+data.id+'" onclick="f('+data.id+')"></td> <td>'
+									+data[i].person + '</td> <td>'+ data[i].itemname+'</td> <td>'+ data[i].price +'</td><td>'+ data[i].category +'</td></tr>';
+
+						$("#bodycontent").html(tdata);
+						
+					},
+					error : function() {
+						alert('Error: ' + e);
+					}
+				});
+
+		
+	}
+	
+	//show all expenses data into table
+	function fun() {
+		//alert("fun");
+
+		tdata = "";
+		$.ajax({
+					type : "POST",
+					url : "../rest/expenses?q=expenses",
+					data : {
+						id: "id",
+						person : "person",
+						itemname:"itemname",
+						price:"price",
+						category:"category"
+					},
+					dataType : "json",
+					beforeSend: function(msg){
+				    // alert("i am going to submit");
+				    },
+					success : function(data) {
+						//alert(JSON.stringify(data));
+						//alert( data[0].person);
+						
+						for (i = 0; i < data.length; i++)
+							tdata += '<tr class="success" id="'+data[i].id+'"><td><input type="checkbox" name="expns" value="'+data[i].id+'" onclick="f('+data.id+')"></td> <td>'
+									+data[i].person + '</td> <td>'+ data[i].itemname+'</td> <td>'+ data[i].price +'</td><td>'+ data[i].category +'</td></tr>';
+
+						$("#bodycontent").html(tdata);
+						
+					},
+					error : function() {
+                              alert("iuiuhikhik====");
+					}
+				});
+
+	}
+	function f(x){
+		//alert(x);
+	}
+	//add data into table
+	function saveData(){	
+	//	alert("its a saveData call");
+		
+		$.ajax({
+			type : "POST",
+			url : "/RIMS/rest/expenses?q=adddata",
+			data : {
+				 rname : $("#roomyname").val(),
+				 iname : $("#itemname").val(),
+				 price : $("#price").val(),
+				 category: $("#category").val()
+			},
+			dataType : "json",
+			beforeSend: function(msg){
+			    alert("This is add item ajax");
+			    },
+			success : function(data) {
+				alert(data.result);
+				if (data.result == "success") {
+					location.reload();
+				} else
+					alert("Failed to save");
+			},
+			error : function() {
+                alert("JSON Exception");
+		}
+
+		});
+	}
+	
+	//before update show data into update form
+	function update(){
+		//alert("its a update call");
+		
+		  id= $('input[type="checkbox"]:checked').val();
+		 id=parseInt(id)+1;
+		 //alert(id);
+		
+		$.ajax({
+			type : "POST",
+			url : "/RIMS/rest/expenses?q=update",
+			data : {
+				  id: id
+			},
+			dataType : "json",
+			beforeSend: function(msg){
+			    //alert(" This is update ajax");
+			},
+			success : function(data) {
+			//	alert(JSON.stringify(data));
+				$("#roomyname").val(data.person);
+				$("#itemname").val(data.itemname);
+				$("#price").val(data.price);
+				$("#category").val(data.category);
+					
+				/* 			 tdata = '<tr class="success" id="'+data.id+'"><td><input type="checkbox" name="expns"  onclick="f('+data.id+')"></td> <td>'
+							+data.person + '</td> <td>'+ data.itemname+'</td> <td>'+ data.price +'</td><td>'+ data.category +'</td></tr>';
+ */
+				$("#bodycontent").html(tdata);
+			},
+			error : function() {
+                //alert("iuiuhikhik====");
+		}
+
+		});
+		
+	}
+	function setflag1(){
+		uflag=true;
+		
+	}
+	
+	function setflag(){
+		if(uflag == true)
+			updateSubmit();
+		else 
+			saveData();
+	}
+	
+	//after update submit into table
+	function updateSubmit(){	
+	//	alert("its a updateSubmit call");
+	  // alert(id);
+		$.ajax({
+			type : "POST",
+			url : "/RIMS/rest/expenses?q=updateaddexpen",
+			data : {
+				id: id,
+				 rname : $("#roomyname").val(),
+				 iname : $("#itemname").val(),
+				 price : $("#price").val(),
+				 category: $("#category").val()
+				
+			},
+			dataType : "json",
+			beforeSend: function(msg){
+			    confirm("Are you sure");
+			    },
+			success : function(data) {
+				
+				if (data.result == "success") {
+					location.reload();
+				} else
+					alert("Failed to save");
+			},
+			error : function() {
+                alert("JSON Exception");
+		}
+
+		});
+	}
+</script>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">RIMS</a>
+			</div>
+			<ul class="nav navbar-nav pull-right">
+				<li class="active dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="/RIMS/index.html"> Home <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Kitchen</a></li>
+						<li><a href="#">Room</a></li>
+						<li><a href="#">Expenses</a></li>
+						<li><a href="#">Bathroom</a></li>
+					</ul>
+				</li>
+				<li><a href="">About us</a></li>
+				<li><a href="">Contact us</a></li>
+				<li><a href="javascript:showForm(1);" onclick="showForm(1);">Register</a></li>
+				<li><a href="../static/profile.html">Profile</a></li>
+				 <li><a href="../RIMS/j_spring_security_logout" onclick="location.reload();">Logout</a>  </li>
+			</ul>
+		</div>
+	</nav>
+<div class="container-fluid">
+	<button type="button" class="edit-button btn btn-info " data-toggle="modal" data-target="#myModal" value="Add">Add</button>
+	<input type="button" class="edit-button btn btn-info" data-toggle="modal" data-target="#myModal" onclick="update();setflag1();" value="Update"/>
+	<input type="button" class="edit-button btn btn-info" onclick="getAllChecked();" value="Delete"/>
+	<span><input type="text" id="key1">
+			<input type="button" class="edit-button btn btn-info" id="key" value="search" onclick="search();"></span>
+  <table class="table">
+    <thead>
+      <tr>
+      	<th><input type="checkbox"></th>
+        <th>Person</th>
+        <th>Itemname</th>
+        <th>Price</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody id="bodycontent">
+    </tbody>
+        <tr>
+    <td></td>
+    <td>Total Items:</td>
+    <td>Total Price:</td>
+    <td></td>
+    </tr>
+    
+  </table>
+
+<div class="col-md-12 text-center">
+           <ul class="pagination pagination-lg pager" id="myPager"></ul>
+       </div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">ADD ITEM</h4>
+        </div>
+        <div class="modal-body">
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input type="text" class="form-control" placeholder="Username" id="roomyname"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                            </span>
+                            <input type="text" class="form-control" placeholder="Itemname" id="itemname" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                            <input type="text" class="form-control" placeholder="Price" id="price"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                            <input type="text" class="form-control" placeholder="Category" id="category"/>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="javascript:setflag();" class="btn btn-sm btn-primary" role="button">
+                    SUBMIT</a>
+                    <a  href="javascript:reset();" class="btn btn-sm btn-primary" data-dismiss="modal">Reset</a> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+</body>
+</html>

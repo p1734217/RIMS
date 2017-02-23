@@ -11,6 +11,7 @@
 		<bean id="userController" class="com.rims.controller.UserController" />
 		<bean id="loginController" class="com.rims.controller.LoginController" /> 
 		<bean id="registerController" class="com.rims.controller.RegisterController"/>
+		<bean id="expensesController" class="com.rims.controller.ExpensesController"/>
 
      <bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
 		<property name="basename" value="views" />
@@ -27,6 +28,7 @@
 					<prop key="/user">userController</prop>
 					<prop key="/login">loginController</prop>
 					<prop key="/register">registerController</prop>
+					<prop key="/expenses">expensesController</prop>
 				</props>
 			</property>
 		</bean>

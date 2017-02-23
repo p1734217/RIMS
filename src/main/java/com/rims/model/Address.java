@@ -3,11 +3,13 @@
  */
 package com.rims.model;
 
+import java.util.Comparator;
+
 /**
  * @author Administrator
  *
  */
-public class Address {
+public class Address implements Comparator<Address>{
 
 	private String country;
 	private String state;
@@ -49,5 +51,19 @@ public class Address {
 	}
 	public void setOthers(String others) {
 		this.others = others;
+	}
+	//this is for comparable
+	public int compareTo(Address a) {
+		// TODO Auto-generated method stub
+		return this.distt.compareTo(a.getDistt());
+	}
+	//this method for comparator
+	public int compare(Address o1, Address o2) {
+		if(o1.pincode <o2.pincode)
+			return -1;
+		else if(o1.pincode >o2.pincode)
+			return 1;
+		else
+			return 0;
 	}
 }

@@ -12,8 +12,8 @@ import java.util.Arrays;
 public class Roomy {
 
 	private String name;
-	private Integer mobileNo1;
-	private Integer mobileNo2;
+	private int mobileNo1;
+	private int mobileNo2;
 	private String password;
 	private String email;
 	private Address address;

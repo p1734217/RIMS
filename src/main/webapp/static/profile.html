@@ -8,7 +8,25 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
-	
+$(document).ready(function() {
+		var userName='';
+		$.ajax({
+			type:"GET",
+			url:"../rest/login?q=getUserName",
+			cache:false,					
+			async:false,
+			dataType:"json",
+			success:function(msg){		
+				if(msg.result == "success"){
+					userName=msg.name;
+					$('#loggedinuser').html('<span><font color="darkgrey"> welcome '+userName+' | <a href="../RIMS/j_spring_security_logout" onclick="location.reload();">Logout</font></a></span>');	
+				}
+			},
+			error: function(msg) {
+			}
+		});
+		
+	});
 	
 	function login() {
 	
@@ -80,7 +98,7 @@
 	$("#userEmail").val("");
 	
 }
-	function uplodaImage(id) {
+/* 	function uplodaImage(id) {
 
 		alert($("#" + id).val().split("\\").slice(-1).pop());
 		alert($("#" + id).val());
@@ -114,7 +132,7 @@
 			}
 		});
 	}
-
+ */
 </script>
 </head>
 <body>
@@ -129,6 +147,8 @@
       <li><a href="" >Contact us</a></li>
       <li><a href="javascript:showForm(1);"  onclick= "showForm(1);">Register</a></li>
       <li><a href="javascript:showForm(2);" >Login</a>  </li>
+      <li><span style="float:right;padding:12px" id="loggedinuser" ><font color="red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></span></li>
+      <li><a href="../RIMS/j_spring_security_logout" onclick="location.reload();">Logout</a>  </li>
     </ul>
   </div>
 </nav>

@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 
@@ -27,9 +28,8 @@ public class UserController extends MultiActionController{
 		int b=Integer.valueOf(request.getParameter("b"));
 		int c=a+b;
 		
-		
-		
 		JSONObject job=new JSONObject();
+		
 		try {
 			
 			job.put("data","its you babau");

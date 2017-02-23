@@ -42,7 +42,15 @@
 				<a class="navbar-brand" href="#">RIMS</a>
 			</div>
 			<ul class="nav navbar-nav pull-right">
-				<li class="active"><a href="/RIMS/index.html">Home</a></li>
+				<li class="active dropdown">
+				    <a class="dropdown-toggle" data-toggle="dropdown" href="/RIMS/index.html"> Home <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Kitchen</a></li>
+						<li><a href="#">Room</a></li>
+						<li><a href="../static/expenses.html">Expenses</a></li>
+						<li><a href="#">Bathroom</a></li>
+					</ul>
+				</li>
 				<li><a href="">About us</a></li>
 				<li><a href="">Contact us</a></li>
 				<li><a href="javascript:showForm(1);" onclick="showForm(1);">Register</a></li>

@@ -1,0 +1,54 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+
+	<http auto-config="true">
+		<!-- <intercept-url pattern="/RIMS**" access="ROLE_USER" /> -->
+		<intercept-url pattern="/static/bathroom.html" access="ROLE_USER" />
+		<intercept-url pattern="/static/expenses.html" access="ROLE_USER" />
+		<intercept-url pattern="/static/home.html" access="ROLE_USER" />
+		<intercept-url pattern="/static/profile.html" access="ROLE_USER,ROLE_OWNER" />
+		<intercept-url pattern="/static/room.html" access="ROLE_USER" />
+		<intercept-url pattern="/index.html" access="ROLE_USER" />
+		<intercept-url pattern="/rest/expenses" access="ROLE_USER" />
+
+		<form-login login-page="/static/login.html"
+			default-target-url="/static/profile.html" authentication-failure-url="/index.html"
+			username-parameter="username" password-parameter="password" />
+		<logout logout-success-url="/index.html" />
+
+	</http>
+
+	<authentication-manager>
+		<!-- <authentication-provider> <user-service> <user name="user" password="user" 
+			authorities="ROLE_USER" /> </user-service> </authentication-provider> -->
+		<authentication-provider>
+		<jdbc-user-service data-source-ref="jdbcDataSource"
+		   users-by-username-query="select username,password, enabled from roles.users where username=?"
+		       authorities-by-username-query="select username, role from roles.authorities where username =?  " />
+	 	</authentication-provider>
+	</authentication-manager>
+	
+<!-- 	<bean id="daoAuthenticationProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="daoUserDetailsService" />
+		<property name="passwordEncoder">
+			<bean class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+		</property>
+	</bean>
+	
+	<bean id="daoUserDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+		<property name="dataSource" ref="jdbcDataSource" />
+	</bean>
+ -->
+	<beans:bean id="jdbcDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<beans:property name="url" value="jdbc:mysql://localhost:3306/rims" />
+		<beans:property name="username" value="root" />
+        <beans:property name="password" value="root" />
+	</beans:bean>
+
+</beans:beans>

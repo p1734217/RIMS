@@ -1,0 +1,581 @@
+.errorMessage {
+	color:#ff0000;	
+	font-size:11px;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+
+.noticeMessage {
+	font-weight: normal; 
+	color:#0065FF; 
+	font-size:90%; 
+	list-style: none; 
+	padding:5px
+	}
+	
+.gray {
+	background-color: #f1f1f1;	
+	border: 1px solid #c0c0c0; 	
+	color: #232323; 
+	margin: 0px 0px 0px 173px;
+	padding:0px;
+	min-height:450px;
+}
+
+
+.impBox { 
+	background-color:#ffffff; /* highlighted box color*/
+	color:#000000;
+}
+	
+	
+	
+.blue {
+	width:170px; 
+	background:#e9e9e9; 
+	padding:0px 1px 0px 2px;
+	float:left;
+	}
+
+
+.blueBox { 
+	background-color:#ffffff;
+	color:#000000;   /* Main box color*/
+	font-weight:normal;
+}
+
+
+.display {
+	color: #fff;
+	font-size:16px;
+	margin: 0px;
+	padding: 2px;
+/*	background:url(../images/blue-grad-title.png) repeat-x;*/
+    background-color: #696969;
+	height:25px;
+	line-height:25px;
+    text-transform: capitalize;
+    font-weight: 500;
+    padding-left: 10px;
+    
+	}
+	
+.dispaly td{
+	padding-left: 5px;
+}
+	
+/*UPDATED DECEMBER 2015: Change link color*/	
+.display  a {
+color:#4ec1ee;
+
+}
+
+
+.subheading {
+	color: #333;
+	font-weight: bold;
+	font-size:11px;
+	margin: 0px;
+	padding: 2px;
+/*	background: url(../images/gray_grad3.png) repeat-x;*/
+    background-color: #e7e7e7; 
+	border: 1px solid #eaebea;
+/* border-bottom:2px solid #fff; */
+	line-height:16px;
+	height:21px;
+	}
+
+/* .subheadingBeta, .subheading {
+	border-bottom:1px solid #c6c6c6;
+	color: #1d5992;
+	font-weight: bold;
+	font-size:11px;
+	margin: 0px;
+	padding: 2px 0px 0px 20px;
+	height:20px;
+}
+
+.subheadingBeta span, .subheading span {
+
+	padding:3px 15px 4px 15px;
+	line-height:15px;
+	background: url(../images/gray_grad4.png) repeat-x;
+} */
+
+.gap {
+height:15px
+
+
+}
+
+.noticeMessage {
+	font-weight: normal; 
+	color:#0065FF; 
+	font-size:11px; 
+	list-style: none;
+	}
+
+/*UPDATED DECEMBER 2015: change display, margins, font-weight, vertical align, color, background-color, border
+padding, border-radius
+*/
+.but-gray {
+	display: inline-block;
+    margin-bottom: 0px;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    background-color: #0083b5;
+    white-space: nowrap;
+    padding: 5px 5px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 4px;
+   -moz-user-select: none;
+    width: auto !important;
+    color:#f5f5f5;
+   
+	}
+/*UPDATED DECEMBER 2015: change background color*/
+.but-gray:hover{
+    background-color: #006a93;
+}
+
+.but-gray-big {
+	font-family:Arial, Helvetica, sans-serif; 
+	font-size:14px; 
+	font-weight: bold;
+	color: #003a5e; 
+	background-image: url(../images/but_grad1.gif); 
+	background-color:#b1b1b1; 
+	background-repeat: repeat-x; 
+	margin: 0px;
+	height: 20px;
+	border: 1px solid #438ece;
+	padding: 0px 2px 3px 2px; 
+	width:150px;
+	}
+
+.table-header {
+	font-size:11px;
+	font-weight:bold; 
+	color:#083a69; 
+	background-image: url(../images/light-blue-bg.png);
+	background-repeat:repeat-x;
+	height:25px;
+	}
+	
+.blue-title td{
+	padding-left:3px;
+	
+	}
+
+
+.editButton-dis {
+	 font:10px Tahoma, "Trebuchet MS", Arial, Verdana;
+	 color: #afafaf;
+	 height: 16px;
+	 border: 1px solid #c0c0c0;
+	 background:url(../images/gray_grad1.gif) repeat-x;
+	 padding:0px 2px 4px 2px;
+}
+
+.reportfilter {
+	text-align: left; 
+	font-family:Verdana, Arial, Helvetica, sans-serif; 
+	background-color: #D4E5FF; 
+	border: 1px solid #A0A3FF; 
+	text-decoration: none; 
+	font-size: 10px; 
+	padding:2px;  
+	}
+
+/*UPDATED DECEMBER 2015*/
+.NavStretch { 
+    background-repeat:repeat-x;
+    background-color: #3A3A3A;
+   
+	}
+
+.HeaderNav  ul.Navigation li a {
+	color:#bababa;
+	text-decoration:none;
+	line-height:32px;
+    font-family: 'Lato', sans-serif;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 12px;
+	}
+
+/*UPADTED DECEMBER 2015: change color and background color*/
+.HeaderNav  ul.Navigation li a:hover{
+	color:#f5f5f5;
+    background-color: #212121;
+	}
+
+/*UPADTED DECEMBER 2015 -Active button-: change color and background color*/
+.HeaderNav ul.Navigation li a.CurPage {
+	color:#f5f5f5; 
+    background:#212121; 
+}
+
+.submenu  ul li.select, .submenu-full ul li.select {
+	background-color:#1b5790;
+	
+	}
+
+.submenu  ul li a, .submenu-full ul li a {
+	padding:3px 5px 4px 5px; 
+	line-height:22px; 
+	height:26px; 
+	color:#1b5790; 
+	text-decoration:none; 
+	font-weight:bold
+	}
+
+.submenu  ul li a:hover, .submenu-full ul li a:hover { 
+	background:#1b5790; 
+	color:#ffffff
+	}
+
+.blue-title3 {
+	width:auto; 
+	height:31px; 
+	float:left; 
+
+	background:url(../images/title_bg.gif) right; 
+	background-color:#1b5790;  
+	line-height:29px; 
+	color:#FFFFFF; 
+	font-size:11px; 
+	font-weight:bold; 
+	padding-right:13px; 
+	padding-left:5px
+	}
+
+.blue-title4 {
+	border-bottom:1px solid #ebebeb; 
+	border-top:1px solid #ebebeb; 
+	background: url(../images/grad3.png) repeat-x #fafafa;  
+	padding:4px 0px 5px 12px; 
+	font-size:11px;
+	
+	}
+
+.blue-title5{
+ 	width:auto; 
+	height:31px; 
+	float:left; 
+	background:url(../images/title_bg.gif) right;  
+	line-height:29px; 
+	color:#FFFFFF; 
+	font-size:11px; 
+	font-weight:bold; 
+	padding-right:13px; 
+	padding-left:5px;
+	margin-top:5px;
+	width:94%;
+}
+.blue-title2 {
+	width:auto; 
+	height:31px; 
+	float:left; 
+	background:url(../images/gray_arrow.gif) right no-repeat; 
+	background-color:#1b5790; 
+	line-height:29px; 
+	color:#ffffff; 
+	font-size:11px; 
+	font-weight:bold; 
+	padding-right:13px; 
+	padding-left:5px
+	}
+
+.chromestyle ul li a{
+	color: #1B5790;
+	padding: 2px 3px 2px 2px;
+	margin: 0;
+	text-decoration: none;
+	}	
+
+
+.chromestyle ul li a:hover{
+	background-color: #1b5790; /*THEME CHANGE HERE*/
+	color:#FFFFFF;
+	}
+
+.select{
+	background-color: #21a5e7; 
+	color:#FFFFFF;
+/*	line-height:30px;
+	padding: 4px 7px;*/
+} 
+
+
+select
+ {
+ background-color: #FFFFFF;
+ border: 1px solid #7F9DB9;
+ font-size:10px;
+ font-family:Verdana, Arial, Helvetica, sans-serif;
+ vertical-align: middle;
+}
+
+
+/* ######### Style for Drop Down Menu ######### */
+
+.dropmenudiv{
+	position:absolute;
+	top: 0;
+	left: 0;
+	border: 1px solid #1b5790; /*THEME CHANGE HERE*/
+	border-bottom-width: 0;
+	line-height:16px;
+	font-size:10px;
+	color:#1B5790;
+	z-index:100;
+	background-color: #2064a5;
+	width: 130px;
+	visibility: hidden;
+	
+}
+
+.dropmenudiv a:hover{ /*THEME CHANGE HERE*/
+	background-color: #3580c8;
+	color:#fff;
+}
+
+.grayBorder {
+	border:1px solid #d0e3f5;
+	}
+	
+.click2call {
+	background: url(../images/img3.png) no-repeat left top; 
+	width:662px; 
+	height:207px;
+}
+
+.click2call div {
+	float:right; 
+	margin: 50px 5px 0px 0px; 
+	width:217px; 
+	padding:0px 2px 2px 3px; 
+}
+
+.blueBoxBorder01 {
+	border-top: 1px solid #1B5790;
+	border-left: 1px solid #1B5790;
+	border-right: 1px solid #1B5790;
+}
+
+.blueBoxBorder02 {
+	border-bottom: 1px solid #1B5790;
+	border-left: 1px solid #1B5790;
+	border-right: 1px solid #1B5790;
+}
+
+.hide {
+	text-decoration: none;
+	background-color: #1B5790;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 10px;
+	padding: 3px;
+	margin: 1px 1px 0px 0px
+}
+
+.chromestyle ul li{
+display: inline;
+border-right: 1px solid #dbdbdb;
+padding: 3px;
+}
+
+.blu-bld2 {
+	font-size: 12px;;
+	font-weight: bold;;
+	color: #096ae7;
+}
+
+.pointer {
+	background:url(../images/up_double.png) no-repeat  ;
+	cursor: pointer;  
+	height:17px; 
+	padding-left:20px;
+}
+
+.pointer_plus {
+	background:url(../images/down_double.png) no-repeat;
+	cursor: pointer; 
+	width:120px; 
+	height:17px; 
+	padding-left:20px;
+}
+
+/*==================Tab Menu CSS============================*/
+.tabmenu a {
+	background: #0083b5;
+	text-decoration: none;
+	padding-left: 10px;
+	height: 21px;
+	line-height: 21px;
+	color: #fff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.tabmenu a span {
+	background: #0083b5;
+	padding-right: 10px;
+	height: 21px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.tabmenu a,.tabmenu a span {
+	display: block;
+	float: left
+}
+
+/* Hide from IE5-Mac \*/
+.tabmenu a,.tabmenu a span {
+	float: none
+}
+/* End hide */
+.tabmenu a:hover {
+	color: #fff;
+	background: #006a93;
+	padding-left: 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.tabmenu a:hover span {
+	background: #006a93;
+	padding-right: 10px;
+	color: #fff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.current a {
+	color: #fff;
+	background: #005e82;
+	padding-left: 10px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.current a span {
+	background: #005e82;
+	padding-right: 10px;
+	color: #fff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.tabmenu {
+	list-style: none;
+	padding: 0;
+	margin: 0
+}
+
+.tabmenu li {
+	float: left;
+	margin: 0;
+	padding-right: 4px;
+}
+
+.topic_body {
+	background-color: #ffffff;
+}
+/*==================End Tab Menu CSS============================*/
+
+
+
+.but-blue {
+    display: inline-block;
+    margin-bottom: 0px;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    background-color: #16A9E2;
+    white-space: nowrap;
+    padding: 5px 5px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 4px;
+    -moz-user-select: none;
+    width: auto !important;
+    color: #fff;
+    text-decoration: none;
+}
+
+.but-blue:hover{
+    background-color: #0083b5;
+}
+
+.formQuestion {
+	padding: 0.3em;
+	font-weight: 900;
+	font-size: 12px;;
+	color: #ffffff;
+	background-image: url(../images/grad.gif)
+}
+
+
+.jqmWindow {
+    display: none;
+    
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    
+    margin-left: -150px;
+    background-color: #EEE;
+    border: 1px solid #999;
+    padding: 4px;
+}
+
+
+.small-blue {
+	font-size: 9px;;
+	color: #0066FF;;
+	font-weight: bold;
+}
+
+.small-blue-for-reporting {
+	font-size: 9px;;
+	color: #0066FF;;
+	font-weight: bold;
+	width: 20%;
+}
+
+
+.flatbtn {
+	margin-right: 2px;
+	padding: 0px 8px 2px 8px;
+	border: 1px solid #8DB5D7;
+	color: #0056ac;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	background: url(../images/page_bg.gif) repeat-x;
+	font-size-adjust: none;
+	height: 18px;
+}
+
+.flatbtn:disabled {
+	margin-right: 2px;
+	padding: 0px 2px 2px 0px;
+	border: 1px solid #a5a5a5;
+	color: #b5b5b5;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	background: url(../images/page_bg.gif) repeat-x;
+	font-size-adjust: none;
+	height: 18px;
+}
+ 

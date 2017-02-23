@@ -1,0 +1,49 @@
+.chromestyle{
+float:right;
+font-size:10px;
+font-weight:bold;
+margin:0px 12px 0px 0px;
+
+}
+
+.chromestyle:after{ /*Add margin between menu and rest of content in Firefox*/
+content: "."; 
+display: block; 
+height: 0; 
+clear: both; 
+visibility: hidden;
+}
+
+.chromestyle ul{
+width: 100%;
+padding: 4px 0;
+margin: 0;
+text-align: left; /*set value to "left", "center", or "right"*/
+line-height:20px
+}
+
+.chromestyle ul li{
+display: inline;
+border-right: 1px solid #DADADA;
+padding: 4px;
+}
+
+.chromestyle ul li.select a {
+	color:#ffffff;
+	padding: 4px 7px;
+
+	}
+
+.dropmenudiv a{
+width: auto;
+display: block;
+text-indent: 3px;
+border-bottom: 1px solid #BBB; /*THEME CHANGE HERE*/
+padding: 2px 0;
+text-decoration: none;
+color: #fff;
+}
+
+* html .dropmenudiv a{ /*IE only hack*/
+width: 100%;
+}

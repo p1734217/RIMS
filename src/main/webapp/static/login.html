@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Welcome</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+
+	/* function ajaxlogin(){
+
+		$.ajax({
+			    url: '../RIMS/j_spring_security_check',
+			    data: {},
+			    dataType: 'text',
+			    processData: false,
+			    contentType: false,
+			    type: 'POST',
+			    success: function(data){
+			      $('#result').html(data);
+			    }
+			  });
+	
+	} */
+	
+</script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+</nav>
+
+<h1 align="center"> LOGIN PAGE </h1>
+<form action="/RIMS/j_spring_security_check" method='POST'>
+ 
+
+  <div class="container">
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+     <br/>    
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+    <br/>
+    <button type="submit">Login</button>
+    <input type="checkbox" checked="checked"> Remember me
+  </div>
+     
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
+
+<input type="button" value="Ajax Login" onclick="ajaxlogin()">
+
+   <footer class="footer navbar-default">
+      <div class="container">
+        <center><p class="text-muted">Room Inventory Management System   © 2016 Company, Inc.</p></center>
+      </div>
+    </footer>
+</body>
+</html>

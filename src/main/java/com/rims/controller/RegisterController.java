@@ -34,17 +34,20 @@ public class RegisterController extends MultiActionController{
 			String sate= request.getParameter("state");
 			String pin= request.getParameter("pin");
 			String gender=request.getParameter("gender");
+			String other=request.getParameter("other");
+			
+			Address address=new Address();
 			Roomy user=new Roomy();
-			
+			user.setAddress(address);
 			RegisterDao r=new RegisterDaoImpl();
-			
-			if(r.register(user))
+		
+			if(r.registerRoomy(user))
 			  obj.put("result","success");
 			
 		}catch(Exception e)
 		{
-			System.out.println(e);
-			obj.put("result","error");
+			//e.printStackTrace();
+			obj.put("result",e.toString());
 		}
 	 finally
 	 {
@@ -64,6 +67,7 @@ public class RegisterController extends MultiActionController{
 		user=p.getUser(email1);
 		
 		obj.put("email",user.getEmail());
+		obj.put("id","5");
 		response.getWriter().print(obj);		
 		
 		
@@ -138,7 +142,7 @@ public class RegisterController extends MultiActionController{
 				job.put("result","error");
 		  }
 	}
-	public void resgisterRoomy(HttpServletRequest request, HttpServletResponse response)throws Exception{
+/*	public void resgisterRoomy(HttpServletRequest request, HttpServletResponse response)throws Exception{
 		JSONObject job = new JSONObject();
 		try {
 			String name = request.getParameter("name");
@@ -157,7 +161,7 @@ public class RegisterController extends MultiActionController{
 				System.out.println(i+"-th No: "+contacts[i]);
 			
 
-/*			String password = request.getParameter("password");
+			String password = request.getParameter("password");
 			String email = request.getParameter("email");
 			String address = request.getParameter("address");
 			String gender = request.getParameter("gender");
@@ -165,7 +169,7 @@ public class RegisterController extends MultiActionController{
 			RegisterDao p = new RegisterDaoImpl();
 			if (p.roomy(romy))
 				job.put("result", "success");
-*/		
+		
 			Gson gson=new Gson();
 			//Address address=gson.fromJson(json,Address.class);
 			
@@ -177,7 +181,7 @@ public class RegisterController extends MultiActionController{
 		finally{
 		 response.getWriter().print(job);	
 		}
-		}
+		}*/
 	
 }
 
