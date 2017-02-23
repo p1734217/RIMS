@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import net.sf.json.JSONObject;
 
@@ -70,6 +69,7 @@ public void netuser(HttpServletRequest request, HttpServletResponse response) th
 		JSONObject job=new JSONObject();
 		try {
 			job.put("data","I am a MCA pradeep");
+			job.put("key", "value");
 			
 		} catch (Exception e) {
 
